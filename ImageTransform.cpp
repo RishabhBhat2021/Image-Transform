@@ -146,6 +146,18 @@ PNG illinify(PNG image) {
 * @return The watermarked image.
 */
 PNG watermark(PNG firstImage, PNG secondImage) {
+  for (unsigned x = 0; x < firstImage.width(); x++) {
+    for (unsigned y = 0; y < firstImage.height(); y++) {
+
+      HSLAPixel &pixelBaseImg = firstImage.getPixel(x, y);
+      HSLAPixel &pixelStencilImg = secondImage.getPixel(x, y);
+
+      if(pixelStencilImg.l == 1)
+      {
+        pixelBaseImg.l += 0.2;
+      }
+    }
+  }
 
   return firstImage;
 }
