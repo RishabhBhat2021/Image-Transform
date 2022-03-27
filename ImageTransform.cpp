@@ -11,7 +11,7 @@
 
 Write your name and email address in the comment space here:
 
-Name:
+Name: Rishabh Bhat
 Email:
 
 (...end multi-line comment.)
@@ -67,6 +67,24 @@ PNG grayscale(PNG image) {
  * @return The image with a spotlight.
  */
 PNG createSpotlight(PNG image, int centerX, int centerY) {
+
+  for (unsigned x = 0; x < image.width(); x++) {
+    for (unsigned y = 0; y < image.height(); y++) {
+      HSLAPixel & pixel = image.getPixel(x, y);
+
+      double distance = sqrt( ((x - centerX) * (x - centerX)) + 
+                          ((y - centerY) * (y - centerY)) );
+
+      if(distance < 160)
+      {
+        pixel.l = pixel.l - (0.005 * distance * pixel.l);
+      }
+      else
+      {
+        pixel.l = pixel.l - (0.8 * pixel.l);
+      }
+    }
+  }
 
   return image;
   
