@@ -103,6 +103,32 @@ PNG createSpotlight(PNG image, int centerX, int centerY) {
 **/
 PNG illinify(PNG image) {
 
+  for (unsigned x = 0; x < image.width(); x++) {
+    for (unsigned y = 0; y < image.height(); y++) {
+      HSLAPixel & pixel = image.getPixel(x, y);
+
+      double orange = 11;
+      double blue = 216;
+
+      double diffOrange = abs(pixel.h - orange);
+      double diffBlue = abs(pixel.h - blue);
+
+      diffOrange = (diffOrange > 360 - diffOrange) ? 
+                          360 - diffOrange : diffOrange;
+      diffBlue = (diffBlue > 360 - diffBlue) ?
+                          360 - diffBlue : diffBlue;
+
+      if(diffOrange < diffBlue)
+      {
+        pixel.h = 11;
+      }
+      else
+      {
+        pixel.h = 216;
+      }
+    }
+  }
+
   return image;
 }
  
