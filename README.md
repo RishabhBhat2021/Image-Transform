@@ -3,7 +3,7 @@
 ### The Read and Write operation on Image is done by LodePNG 
 > LodePNG is a PNG image decoder and encoder C++ library
 #
-| Spotlight             | Illinify              |
+| Spotlight             | Changing Hue          |
 | :---:                 | :---:                 |
 | ![](out-spotlight.png)| ![](out-illinify.png) |
 
